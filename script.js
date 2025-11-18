@@ -1,23 +1,55 @@
 const grid = document.querySelectorAll(".grid > div");
 
+let deco3svg = 
+        `<svg class="deco-3" width="106" height="106" viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="70.5" y="0.5" width="35" height="35" fill="#FAFAFA" stroke="#7F7F7F"/>
+            <rect x="35.5" y="35.5" width="35" height="35" fill="#FAFAFA" stroke="#7F7F7F"/>
+            <rect x="0.5" y="70.5" width="35" height="35" fill="#FAFAFA" stroke="#7F7F7F"/>
+        </svg>
+        `;
+
+let deco2svg = 
+        `
+        <svg class="deco-2" width="106" height="106" viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="52.5" y="18.5" width="35" height="35" fill="#FAFAFA" stroke="#7F7F7F"/>
+            <rect x="17.5" y="53.5" width="35" height="35" fill="#FAFAFA" stroke="#7F7F7F"/>
+        </svg>
+        `;
+
+
 grid.forEach(sky => {
+    sky.innerHTML += deco2svg + deco3svg;
+    // random z index
+    const z = Math.floor(Math.random() * 10);
+    sky.style.zIndex = `${z}`;
     sky.addEventListener("mouseover", function() {
-        console.log("hi");
+        //console.log("hi");
         var offsetX = Math.floor(Math.random() * (50 + 50 + 1)) -50;
         var offsetY = Math.floor(Math.random() * (50 + 50 + 1)) -50;
-        console.log(offsetX, offsetY);
+        //console.log(offsetX, offsetY);
         this.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
     });
 });
 
-const title = document.querySelectorAll(".title > h1 > span");
+const cloudWrapper = document.createElement("div");
+cloudWrapper.className = "cloud-wrapper";
+document.body.appendChild(cloudWrapper);
 
-title.forEach(word => {
-    word.addEventListener("mouseover", function() {
-        console.log("hi");
-        var offsetX = Math.floor(Math.random() * (50 + 50 + 1)) -50;
-        var offsetY = Math.floor(Math.random() * (50 + 50 + 1)) -50;
-        console.log(offsetX, offsetY);
-        this.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    });
-});
+for (let i = 1; i <= 10; i++) {
+    const cloudSVG = document.createElement("img");
+    cloudSVG.src = `img/cloud-${i}.svg`;
+    cloudSVG.className = "cloud";
+    cloudWrapper.appendChild(cloudSVG);
+
+    // random animation delay
+    const delay = Math.floor(Math.random() * (10 + 10 + 1)) -10;
+    cloudSVG.style.animationDelay = `${delay}s`;
+
+    // random top position
+    const top = Math.random() * 100;
+    cloudSVG.style.top = `${top}vh`;
+
+    // random z-index
+    const z = Math.floor(Math.random() * 10);
+    cloudSVG.style.zIndex = `${z}`;
+}

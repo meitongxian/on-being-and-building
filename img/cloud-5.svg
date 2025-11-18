@@ -1,0 +1,9 @@
+<svg width="750" height="141" viewBox="0 0 750 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="-0.5" y="0.5" width="499" height="35" transform="matrix(-1 0 0 1 500 0)" fill="#FAFAFA" stroke="#7F7F7F"/>
+<rect x="-0.5" y="0.5" width="249" height="35" transform="matrix(-1 0 0 1 749 64)" fill="#FAFAFA" stroke="#7F7F7F"/>
+<mask id="path-3-inside-1_83_86" fill="white">
+<path d="M1 141H750V99H501V35H1V141Z"/>
+</mask>
+<path d="M1 141H750V99H501V35H1V141Z" fill="#F1F0EE" fill-opacity="0.9"/>
+<path d="M1 141V142H0V141H1ZM750 141H751V142H750V141ZM750 99V98H751V99H750ZM501 99V100H500V99H501ZM501 35V34H502V35H501ZM1 35H0V34H1V35ZM1 141V140H750V141V142H1V141ZM750 141H749V99H750H751V141H750ZM750 99V100H501V99V98H750V99ZM501 99H500V35H501H502V99H501ZM501 35V36H1V35V34H501V35ZM1 35H2V141H1H0V35H1Z" fill="#7F7F7F" mask="url(#path-3-inside-1_83_86)"/>
+</svg>
