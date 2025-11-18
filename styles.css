@@ -6,20 +6,17 @@
     font-family: Arial, sans-serif;
 }
 
-canvas {
-  display: block;
-}
-
 .grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  > div {
-    aspect-ratio: 1;
-    background-image: linear-gradient(#8EA3D0, #E0E1E7);
-    border: 1px solid #7f7f7f;
-    align-content: end;
-    transition: 0.5s ease-out;
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    > div {
+        aspect-ratio: 1;
+        background-image: linear-gradient(#8EA3D0, #E0E1E7);
+        border: 1px solid #7f7f7f;
+        align-content: end;
+        transition: 0.5s ease-out;
   }
 }
 
@@ -45,6 +42,7 @@ canvas {
     color: transparent;
     text-shadow: 0 0 0.25rem rgba(0,0,0,0.75);
     pointer-events: none;
+    display: none;
 }
 
 h1 {
