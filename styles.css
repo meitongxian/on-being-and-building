@@ -28,6 +28,7 @@ body {
 }
 
 .background-wrapper {
+    position: fixed;
     width: 100%;
     height: 100vh; /*fallback if no custom properties support*/
     height: calc(var(--vh, 1vh) * 100);
@@ -82,23 +83,33 @@ body {
 
 @keyframes cloud-float {
     0% {
-        transform: translateX(-100%);
+        transform: translateX(200%);
         opacity: 1;
     }
     100% {
-        transform: translateX(200%);
+        transform: translateX(-100%);
         opacity: 1;
     }
 }
 
 /*WORDS*/
 
-.title-wrapper {
+main {
+    pointer-events: none;
     top: 0;
-    padding: 2rem;
-    height: 100vh; /*fallback if no custom properties support*/
-    height: calc(var(--vh, 1vh) * 100);
     position: absolute;
+    display: grid;
+    grid-template-columns: repeat(30, 500px);
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin: 2rem;
+    gap: 1rem;
+}
+
+.title-wrapper {
+    height: calc(100vh - 4rem); /*fallback if no custom properties support*/
+    height: calc((var(--vh, 1vh) * 100) - 4rem);
+    grid-column: span 2;
     z-index: 11;
     display: flex;
     flex-direction: column;
@@ -126,7 +137,20 @@ h1 {
     > span > span:hover {
         text-shadow: 0 0 1rem rgba(0,0,0,0.75);
     }
-    
+}
+
+.column-wrapper {
+    height: fit-content;
+    z-index: 12;
+}
+
+p {
+    border: 1px solid #7f7f7f;
+    background-color: #fafafa;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+    pointer-events: all;
 }
 
 @media (max-width: 1024px) {
@@ -134,12 +158,18 @@ h1 {
     .grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    main {
+        grid-template-columns: repeat(30, 250px);
+    }
     
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     h1 > span {
         padding: 0 0.5rem;
     }
+
+    
 }
