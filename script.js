@@ -31,9 +31,10 @@ grid.forEach(sky => {
     });
 });
 
+const background = document.querySelector(".background-wrapper");
 const cloudWrapper = document.createElement("div");
 cloudWrapper.className = "cloud-wrapper";
-document.body.appendChild(cloudWrapper);
+background.appendChild(cloudWrapper);
 
 for (let i = 1; i <= 10; i++) {
     const cloudSVG = document.createElement("img");
@@ -53,3 +54,4 @@ for (let i = 1; i <= 10; i++) {
     const z = Math.floor(Math.random() * 10);
     cloudSVG.style.zIndex = `${z}`;
 }
+
