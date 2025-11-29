@@ -195,11 +195,11 @@ small {
     }
 
     main {
-        grid-template-columns: repeat(30, 200px);
+        grid-template-columns: repeat(30, 150px);
     }
     
     h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
 
     h1 > span {
