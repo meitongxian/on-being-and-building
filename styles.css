@@ -113,8 +113,6 @@ main {
 }
 
 .column-flex {
-    height: calc(100vh - 6rem); /*fallback if no custom properties support*/
-    height: calc((var(--vh, 1vh) * 100) - 6rem);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -143,6 +141,8 @@ h1 {
 }
 
 .column-wrapper {
+    height: calc(100vh - 6rem); /*fallback if no custom properties support*/
+    height: calc((var(--vh, 1vh) * 100) - 6rem);
     z-index: 12;
     overflow-y: auto;
 }
