@@ -4,6 +4,7 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: Arial, sans-serif;
+    --column-width: 500px;
 }
 
 body {
@@ -99,14 +100,17 @@ main {
     top: 0;
     position: absolute;
     display: grid;
-    grid-template-columns: repeat(30, 500px);
-    overflow-y: hidden;
+    grid-template-columns: repeat(30, var(--column-width));
+    /*overflow-y: hidden;*/
     overflow-x: auto;
-    margin: 2rem;
+    padding: 0 2rem;
     gap: 1rem;
 }
 
 .title-wrapper {
+    height: calc(100vh - 6rem); /*fallback if no custom properties support*/
+    height: calc((var(--vh, 1vh) * 100) - 6rem);
+    padding-top: 2rem;
     grid-column: span 2;
     z-index: 11;
     pointer-events: none;
@@ -118,7 +122,14 @@ main {
     justify-content: space-between;
 }
 
+.row-flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 h1 {
+    margin: 0;
     font-size: 6rem;
     font-weight: 400;
     line-height: 130%;
@@ -141,21 +152,22 @@ h1 {
 }
 
 .column-wrapper {
-    height: calc(100vh - 6rem); /*fallback if no custom properties support*/
-    height: calc((var(--vh, 1vh) * 100) - 6rem);
+    padding: 2rem 0;
+    height: calc(100vh); /*fallback if no custom properties support*/
+    height: calc((var(--vh, 1vh) * 100));
     z-index: 12;
     overflow-y: auto;
 }
 
-.block, small {
+.block, .timestamp {
     border: 1px solid #7f7f7f;
     background-color: #fafafa;
     pointer-events: all;
 }
 
 .block {
-    padding: 1rem 1rem 0 1rem;
     margin-bottom: 1rem;
+    padding: 1rem 1rem 0 1rem;
 }
 
 iframe {
@@ -167,37 +179,47 @@ iframe {
     grid-template-columns: 1fr 6fr;
 }
 
-p, figcaption, iframe, img {
+p, iframe, img {
     margin-bottom: 1rem;
 }
 
-figcaption {
+figcaption, span.block {
     text-align: center;
+    padding-bottom: 1rem;
 }
 
-small {
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    display: inline;
+.timestamp {
+    font-size: small;
+    padding: 0.75rem;
+    transform: translateY(1rem);
 }
 
 .scroll {
     position: fixed;
+    width: 100%;
     z-index: 13;
-    left: 2rem;
-    bottom: 2rem;
+    bottom: 0;
+    padding: 2rem;
+}
+
+.scrollbar {
+    position: absolute;
+    bottom: 1rem;
+    border: 1px solid #7f7f7f;
+    background-color: #F1F0EE;
+    height: 1rem;
 }
 
 @media (max-width: 1024px) {
+
+    * {
+        --column-width: 150px;
+    }
 
     .grid {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    main {
-        grid-template-columns: repeat(30, 150px);
-    }
-    
     h1 {
         font-size: 3.5rem;
     }
