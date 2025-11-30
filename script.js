@@ -88,16 +88,23 @@ function customScroll() {
 
     const timestamp = document.querySelector("#timestamp");
     let minutes = Math.floor((fraction * 2065) / 60);
+    let seconds = Math.ceil((fraction * 2065) % 60);
+
+    if (seconds == 60 && minutes == 0) {
+        minutes = 1;
+        seconds = 0;
+    } else if (seconds == 60) {
+        seconds = 0;
+    }
+
     if (minutes < 10) {
         minutes = "0" + minutes;
     }
-    let seconds = Math.ceil((fraction * 2065) % 60);
-    if (seconds == 60) {
-        seconds = "00";
-    }
-    if (seconds < 10) {
+
+    if (seconds < 10){
         seconds = "0" + seconds;
     }
+    
     timestamp.innerHTML = minutes + ":" + seconds;
 }
 
