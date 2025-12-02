@@ -86,6 +86,8 @@ function customScroll() {
     scrollBarWidth = fraction * totalBarWidth;
     scrollBar.style.setProperty("width", scrollBarWidth + "px"); // set to new width
 
+    // set timestamp number
+
     const timestamp = document.querySelector("#timestamp");
     let minutes = Math.floor((fraction * 2065) / 60);
     let seconds = Math.ceil((fraction * 2065) % 60);
@@ -108,7 +110,7 @@ function customScroll() {
     timestamp.innerHTML = minutes + ":" + seconds;
 }
 
-document.addEventListener('scroll', () => {
+document.addEventListener("scroll", () => {
     customScroll();
 });
 

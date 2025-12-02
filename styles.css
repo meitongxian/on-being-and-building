@@ -100,7 +100,7 @@ main {
     top: 0;
     position: absolute;
     display: grid;
-    grid-template-columns: repeat(30, var(--column-width));
+    grid-template-columns: repeat(21, var(--column-width));
     /*overflow-y: hidden;*/
     overflow-x: auto;
     padding: 0 2rem;
@@ -114,6 +114,12 @@ main {
     grid-column: span 2;
     z-index: 11;
     pointer-events: none;
+}
+
+.credits-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 .column-flex {
@@ -151,6 +157,17 @@ h1 {
     }
 }
 
+a {
+    color: transparent;
+    text-shadow: 0 0 0 rgba(0,0,0,0.5);
+    transition: 0.5s ease;
+    text-decoration: none;
+}
+
+a:hover {
+    text-shadow: 0 0 0.25rem rgba(0,0,0,0.75);
+}
+
 .column-wrapper {
     padding: 2rem 0;
     height: calc(100vh); /*fallback if no custom properties support*/
@@ -159,7 +176,7 @@ h1 {
     overflow-y: auto;
 }
 
-.block, .timestamp {
+.block, .label {
     border: 1px solid #7f7f7f;
     background-color: #fafafa;
     pointer-events: all;
@@ -170,8 +187,28 @@ h1 {
     padding: 1rem 1rem 0 1rem;
 }
 
+.iframe-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
+}
+
 iframe {
+    width: 100%;
+    height: 100%;
     border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.iframe-scale {
+    transform: scale(0.425);
+    transform-origin: 0 0;
+    width: 235%;
+    height: 235%;
 }
 
 .interview {
@@ -179,7 +216,7 @@ iframe {
     grid-template-columns: 1fr 6fr;
 }
 
-p, iframe, img {
+p, .iframe-wrapper, img {
     margin-bottom: 1rem;
 }
 
@@ -188,8 +225,8 @@ figcaption, span.block {
     padding-bottom: 1rem;
 }
 
-.timestamp {
-    font-size: small;
+.label {
+    /*font-size: small;*/
     padding: 0.75rem;
     transform: translateY(1rem);
 }
@@ -200,6 +237,7 @@ figcaption, span.block {
     z-index: 13;
     bottom: 0;
     padding: 2rem;
+    pointer-events: none;
 }
 
 .scrollbar {
@@ -207,17 +245,28 @@ figcaption, span.block {
     bottom: 1rem;
     border: 1px solid #7f7f7f;
     background-color: #F1F0EE;
-    height: 1rem;
+    height: 1.5rem;
+    /* resize: horizontal;
+    overflow: auto; */
 }
 
 @media (max-width: 1024px) {
 
+    /*
     * {
-        --column-width: 150px;
-    }
+        --column-width: 300px;
+    }*/
 
     .grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    main {
+        grid-template-columns: repeat(20, var(--column-width));
+    }
+
+    .title-wrapper {
+        grid-column: span 1;
     }
 
     h1 {
@@ -226,10 +275,6 @@ figcaption, span.block {
 
     h1 > span {
         padding: 0 0.5rem;
-    }
-
-    .column-wrapper {
-        grid-column: span 2;
     }
     
 }
